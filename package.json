@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "classnames": "~2.2",
-    "react-addons-pure-render-mixin": ">=0.14.0"
+    "react-addons-pure-render-mixin": ">=0.14.0",
+    "shallow-copy": "0.0.1"
   }
 }

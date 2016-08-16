@@ -14,14 +14,19 @@ var X = _interopRequire(require("./x"));
 
 var PureRenderMixin = _interopRequire(require("react-addons-pure-render-mixin"));
 
+var copy = require("shallow-copy").copy;
+
 module.exports = React.createClass({
   mixins: [PureRenderMixin],
 
   displayName: "Toggle",
 
+  customProps: {},
+
   propTypes: {
     checked: React.PropTypes.bool,
     defaultChecked: React.PropTypes.bool,
+    showColors: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
@@ -75,10 +80,13 @@ module.exports = React.createClass({
     var _this = this;
 
     var classes = classNames("react-toggle", {
-      "react-toggle--checked": this.state.checked,
+      "react-toggle--checked": this.state.checked && this.props.showColors,
+      "react-toggle--checked-lessColor": this.state.checked && !this.props.showColors,
       "react-toggle--focus": this.state.hasFocus,
       "react-toggle--disabled": this.props.disabled
     });
+
+    var inputFieldProperties = {};
 
     return React.createElement(
       "div",
@@ -89,12 +97,12 @@ module.exports = React.createClass({
         React.createElement(
           "div",
           { className: "react-toggle-track-check" },
-          React.createElement(Check, null)
+          this.props.children
         ),
         React.createElement(
           "div",
           { className: "react-toggle-track-x" },
-          React.createElement(X, null)
+          this.props.children
         )
       ),
       React.createElement("div", { className: "react-toggle-thumb" }),

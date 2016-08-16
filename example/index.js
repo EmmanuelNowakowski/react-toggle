@@ -76,7 +76,10 @@ var App = React.createClass({
           <label>
             <Toggle
               defaultChecked={this.state.baconIsReady}
-              onChange={this.handleBaconChange} />
+              showColors={true}
+              onChange={this.handleBaconChange} >
+
+              </Toggle>
             <span className="label-text">Wrapper label tag</span>
           </label>
 

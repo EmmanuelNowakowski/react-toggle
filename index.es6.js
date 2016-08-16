@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import Check from './check'
 import X from './x'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import copy from 'shallow-copy'
 
 export default React.createClass({
   mixins: [PureRenderMixin],
@@ -12,6 +13,7 @@ export default React.createClass({
   propTypes: {
     checked: React.PropTypes.bool,
     defaultChecked: React.PropTypes.bool,
+    showColors: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
@@ -63,20 +65,26 @@ export default React.createClass({
   },
 
   render() {
+
     var classes = classNames('react-toggle', {
-      'react-toggle--checked': this.state.checked,
-      'react-toggle--focus': this.state.hasFocus,
-      'react-toggle--disabled': this.props.disabled
-    })
+        'react-toggle--checked' : this.state.checked && this.props.showColors,
+        'react-toggle--checked-lessColor' : this.state.checked && !this.props.showColors,
+        'react-toggle--focus': this.state.hasFocus,
+        'react-toggle--disabled': this.props.disabled
+      })
+
+    // remove all properties that are not allowed in input-fields
+    var inputFieldProperties = copy(this.props);
+    delete inputFieldProperties.showColors;
 
     return (
       <div className={classes} onClick={this.handleClick}>
         <div className="react-toggle-track">
           <div className="react-toggle-track-check">
-            <Check />
+            {this.props.children}
           </div>
           <div className="react-toggle-track-x">
-            <X />
+            {this.props.children}
           </div>
         </div>
         <div className="react-toggle-thumb"></div>
@@ -87,7 +95,7 @@ export default React.createClass({
           onBlur={this.handleBlur}
           className="react-toggle-screenreader-only"
           type="checkbox"
-          {...this.props} />
+          {...inputFieldProperties} />
       </div>
     )
   }
