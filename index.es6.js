@@ -86,7 +86,7 @@ export default React.createClass({
       float: 'left',
     }
 
-  if (!this.props.renderSVGs) {
+  if (this.props.renderSVGs === false) {
     return (
       <div className={classes} onClick={this.handleClick}>
         <div className="react-toggle-track">
