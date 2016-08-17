@@ -25,6 +25,7 @@ module.exports = React.createClass({
     checked: React.PropTypes.bool,
     defaultChecked: React.PropTypes.bool,
     showColors: React.PropTypes.bool,
+    renderSVGs: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
@@ -87,34 +88,64 @@ module.exports = React.createClass({
     // remove all properties that are not allowed in input-fields
     var inputFieldProperties = copy(this.props);
     delete inputFieldProperties.showColors;
+    delete inputFieldProperties.renderSVGs;
 
-    return React.createElement(
-      "div",
-      { className: classes, onClick: this.handleClick },
-      React.createElement(
+    var spanStyle = {
+      position: "relative",
+      margin: "0 auto",
+      display: "inline-block",
+      float: "left" };
+
+    if (this.props.renderSVGs == false) {
+      return React.createElement(
         "div",
-        { className: "react-toggle-track" },
+        { className: classes, onClick: this.handleClick },
         React.createElement(
           "div",
-          { className: "react-toggle-track-check" },
-          this.props.children
+          { className: "react-toggle-track" },
+          React.createElement("div", { className: "react-toggle-track-check" }),
+          React.createElement("div", { className: "react-toggle-track-x" })
         ),
+        React.createElement("div", { className: "react-toggle-thumb" }),
+        React.createElement("input", _extends({
+          ref: function (ref) {
+            _this.input = ref;
+          },
+          onFocus: this.handleFocus,
+          onBlur: this.handleBlur,
+          className: "react-toggle-screenreader-only",
+          type: "checkbox"
+        }, inputFieldProperties))
+      );
+    } else {
+      return React.createElement(
+        "div",
+        { className: classes, onClick: this.handleClick },
         React.createElement(
           "div",
-          { className: "react-toggle-track-x" },
-          this.props.children
-        )
-      ),
-      React.createElement("div", { className: "react-toggle-thumb" }),
-      React.createElement("input", _extends({
-        ref: function (ref) {
-          _this.input = ref;
-        },
-        onFocus: this.handleFocus,
-        onBlur: this.handleBlur,
-        className: "react-toggle-screenreader-only",
-        type: "checkbox"
-      }, inputFieldProperties))
-    );
+          { className: "react-toggle-track" },
+          React.createElement(
+            "div",
+            { className: "react-toggle-track-check" },
+            React.createElement(Check, null)
+          ),
+          React.createElement(
+            "div",
+            { className: "react-toggle-track-x" },
+            React.createElement(X, null)
+          )
+        ),
+        React.createElement("div", { className: "react-toggle-thumb" }),
+        React.createElement("input", _extends({
+          ref: function (ref) {
+            _this.input = ref;
+          },
+          onFocus: this.handleFocus,
+          onBlur: this.handleBlur,
+          className: "react-toggle-screenreader-only",
+          type: "checkbox"
+        }, inputFieldProperties))
+      );
+    }
   }
 });

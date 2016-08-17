@@ -79,36 +79,29 @@ export default React.createClass({
     delete inputFieldProperties.showColors;
     delete inputFieldProperties.renderSVGs;
 
-    var spanStyle = {
-      position: 'relative',
-      margin: '0 auto',
-      display: 'inline-block',
-      float: 'left',
-    }
+    if (this.props.renderSVGs === false || this.props.renderSVGs === undefined) {
+      return (
+        <div className={classes} onClick={this.handleClick}>
+          <div className="react-toggle-track">
+            <div className="react-toggle-track-check">
 
-  if (this.props.renderSVGs === false) {
-    return (
-      <div className={classes} onClick={this.handleClick}>
-        <div className="react-toggle-track">
-          <div className="react-toggle-track-check">
+            </div>
+            <div className="react-toggle-track-x">
 
-          </div>
-          <div className="react-toggle-track-x">
+            </div>
+            </div>
+          <div className="react-toggle-thumb"></div>
 
-          </div>
+          <input
+            ref={ref => {this.input = ref;}}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            className="react-toggle-screenreader-only"
+            type="checkbox"
+            {...inputFieldProperties} />
         </div>
-        <div className="react-toggle-thumb"></div>
-
-        <input
-          ref={ref => {this.input = ref;}}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          className="react-toggle-screenreader-only"
-          type="checkbox"
-          {...inputFieldProperties} />
-      </div>
-    )
-  } else {
+      )
+    } else {
       return (
         <div className={classes} onClick={this.handleClick}>
           <div className="react-toggle-track">

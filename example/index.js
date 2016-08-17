@@ -77,8 +77,8 @@ var App = React.createClass({
             <span className="prefix">Public</span>
             <Toggle
               defaultChecked={this.state.baconIsReady}
-              showColors={true}
-              renderSVGs={false}
+              showColors={false}
+              renderSVGs={true}
               onChange={this.handleBaconChange} >
 
               </Toggle>
