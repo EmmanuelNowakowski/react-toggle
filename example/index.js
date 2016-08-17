@@ -74,13 +74,14 @@ var App = React.createClass({
 
         <div className="example">
           <label>
+            <span className="prefix">Public</span>
             <Toggle
               defaultChecked={this.state.baconIsReady}
-              showColors={true}
+              showColors={false}
               onChange={this.handleBaconChange} >
 
               </Toggle>
-            <span className="label-text">Wrapper label tag</span>
+            <span className="postfix">Private</span>
           </label>
 
           <pre>

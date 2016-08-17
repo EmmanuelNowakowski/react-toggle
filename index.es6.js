@@ -77,14 +77,21 @@ export default React.createClass({
     var inputFieldProperties = copy(this.props);
     delete inputFieldProperties.showColors;
 
+    var spanStyle = {
+      position: 'relative',
+      margin: '0 auto',
+      display: 'inline-block',
+      float: 'left',
+    }
+
     return (
       <div className={classes} onClick={this.handleClick}>
         <div className="react-toggle-track">
           <div className="react-toggle-track-check">
-            {this.props.children}
+            <!-- render svg for check here -->
           </div>
           <div className="react-toggle-track-x">
-            {this.props.children}
+            <!-- render svg for X here -->
           </div>
         </div>
         <div className="react-toggle-thumb"></div>

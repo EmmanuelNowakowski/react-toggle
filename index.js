@@ -14,14 +14,12 @@ var X = _interopRequire(require("./x"));
 
 var PureRenderMixin = _interopRequire(require("react-addons-pure-render-mixin"));
 
-var copy = require("shallow-copy").copy;
+var copy = _interopRequire(require("shallow-copy"));
 
 module.exports = React.createClass({
   mixins: [PureRenderMixin],
 
   displayName: "Toggle",
-
-  customProps: {},
 
   propTypes: {
     checked: React.PropTypes.bool,
@@ -86,7 +84,9 @@ module.exports = React.createClass({
       "react-toggle--disabled": this.props.disabled
     });
 
-    var inputFieldProperties = {};
+    // remove all properties that are not allowed in input-fields
+    var inputFieldProperties = copy(this.props);
+    delete inputFieldProperties.showColors;
 
     return React.createElement(
       "div",
@@ -114,7 +114,7 @@ module.exports = React.createClass({
         onBlur: this.handleBlur,
         className: "react-toggle-screenreader-only",
         type: "checkbox"
-      }, this.props))
+      }, inputFieldProperties))
     );
   }
 });
