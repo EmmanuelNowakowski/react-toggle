@@ -14,6 +14,7 @@ export default React.createClass({
     checked: React.PropTypes.bool,
     defaultChecked: React.PropTypes.bool,
     showColors: React.PropTypes.bool,
+    renderSVGs: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
@@ -76,6 +77,7 @@ export default React.createClass({
     // remove all properties that are not allowed in input-fields
     var inputFieldProperties = copy(this.props);
     delete inputFieldProperties.showColors;
+    delete inputFieldProperties.renderSVGs;
 
     var spanStyle = {
       position: 'relative',
@@ -84,14 +86,15 @@ export default React.createClass({
       float: 'left',
     }
 
+  if (!this.props.renderSVGs) {
     return (
       <div className={classes} onClick={this.handleClick}>
         <div className="react-toggle-track">
           <div className="react-toggle-track-check">
-            <!-- render svg for check here -->
+
           </div>
           <div className="react-toggle-track-x">
-            <!-- render svg for X here -->
+
           </div>
         </div>
         <div className="react-toggle-thumb"></div>
@@ -105,5 +108,28 @@ export default React.createClass({
           {...inputFieldProperties} />
       </div>
     )
+  } else {
+      return (
+        <div className={classes} onClick={this.handleClick}>
+          <div className="react-toggle-track">
+            <div className="react-toggle-track-check">
+              <Check />
+            </div>
+            <div className="react-toggle-track-x">
+              <X />
+            </div>
+          </div>
+          <div className="react-toggle-thumb"></div>
+
+          <input
+            ref={ref => {this.input = ref;}}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            className="react-toggle-screenreader-only"
+            type="checkbox"
+            {...inputFieldProperties} />
+        </div>
+      )
+    }
   }
 })
