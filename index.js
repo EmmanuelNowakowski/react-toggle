@@ -90,13 +90,7 @@ module.exports = React.createClass({
     delete inputFieldProperties.showColors;
     delete inputFieldProperties.renderSVGs;
 
-    var spanStyle = {
-      position: "relative",
-      margin: "0 auto",
-      display: "inline-block",
-      float: "left" };
-
-    if (this.props.renderSVGs == false) {
+    if (this.props.renderSVGs === false || this.props.renderSVGs === undefined) {
       return React.createElement(
         "div",
         { className: classes, onClick: this.handleClick },
