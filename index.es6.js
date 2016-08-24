@@ -15,6 +15,7 @@ export default React.createClass({
     defaultChecked: React.PropTypes.bool,
     showColors: React.PropTypes.bool,
     renderSVGs: React.PropTypes.bool,
+    tabIndex: React.PropTypes.number,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
@@ -78,6 +79,7 @@ export default React.createClass({
     var inputFieldProperties = copy(this.props);
     delete inputFieldProperties.showColors;
     delete inputFieldProperties.renderSVGs;
+    delete inputFieldProperties.tabIndex;
 
     if (this.props.renderSVGs === false || this.props.renderSVGs === undefined) {
       return (
@@ -90,7 +92,7 @@ export default React.createClass({
 
             </div>
             </div>
-          <div className="react-toggle-thumb"></div>
+          <div tabindex={this.props.tabIndex} className="react-toggle-thumb"></div>
 
           <input
             ref={ref => {this.input = ref;}}
@@ -112,7 +114,7 @@ export default React.createClass({
               <X />
             </div>
           </div>
-          <div className="react-toggle-thumb"></div>
+          <div tabindex={this.props.tabIndex} className="react-toggle-thumb"></div>
 
           <input
             ref={ref => {this.input = ref;}}

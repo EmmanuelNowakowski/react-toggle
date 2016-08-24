@@ -26,6 +26,7 @@ module.exports = React.createClass({
     defaultChecked: React.PropTypes.bool,
     showColors: React.PropTypes.bool,
     renderSVGs: React.PropTypes.bool,
+    tabIndex: React.PropTypes.number,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
@@ -89,6 +90,7 @@ module.exports = React.createClass({
     var inputFieldProperties = copy(this.props);
     delete inputFieldProperties.showColors;
     delete inputFieldProperties.renderSVGs;
+    delete inputFieldProperties.tabIndex;
 
     if (this.props.renderSVGs === false || this.props.renderSVGs === undefined) {
       return React.createElement(
@@ -100,7 +102,7 @@ module.exports = React.createClass({
           React.createElement("div", { className: "react-toggle-track-check" }),
           React.createElement("div", { className: "react-toggle-track-x" })
         ),
-        React.createElement("div", { className: "react-toggle-thumb" }),
+        React.createElement("div", { tabindex: this.props.tabIndex, className: "react-toggle-thumb" }),
         React.createElement("input", _extends({
           ref: function (ref) {
             _this.input = ref;
@@ -129,7 +131,7 @@ module.exports = React.createClass({
             React.createElement(X, null)
           )
         ),
-        React.createElement("div", { className: "react-toggle-thumb" }),
+        React.createElement("div", { tabindex: this.props.tabIndex, className: "react-toggle-thumb" }),
         React.createElement("input", _extends({
           ref: function (ref) {
             _this.input = ref;
