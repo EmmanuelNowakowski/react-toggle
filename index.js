@@ -108,8 +108,8 @@ module.exports = React.createClass({
         React.createElement("input", _extends({
           ref: function (ref) {
             _this.input = ref;
-          }
-        }, tabProp, {
+          },
+          tabIndex: this.props.tabindex,
           onFocus: this.handleFocus,
           onBlur: this.handleBlur,
           className: "react-toggle-screenreader-only",
@@ -138,8 +138,8 @@ module.exports = React.createClass({
         React.createElement("input", _extends({
           ref: function (ref) {
             _this.input = ref;
-          }
-        }, tabProp, {
+          },
+          tabIndex: this.props.tabindex,
           onFocus: this.handleFocus,
           onBlur: this.handleBlur,
           className: "react-toggle-screenreader-only",
