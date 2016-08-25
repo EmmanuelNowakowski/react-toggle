@@ -26,7 +26,7 @@ module.exports = React.createClass({
     defaultChecked: React.PropTypes.bool,
     showColors: React.PropTypes.bool,
     renderSVGs: React.PropTypes.bool,
-    tabindex: React.PropTypes.number,
+    tabIndex: React.PropTypes.number,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
@@ -90,9 +90,7 @@ module.exports = React.createClass({
     var inputFieldProperties = copy(this.props);
     delete inputFieldProperties.showColors;
     delete inputFieldProperties.renderSVGs;
-    delete inputFieldProperties.tabindex;
-
-    var tabProp = { tabIndex: this.props.tabindex };
+    delete inputFieldProperties.tabIndex;
 
     if (this.props.renderSVGs === false || this.props.renderSVGs === undefined) {
       return React.createElement(
@@ -109,7 +107,7 @@ module.exports = React.createClass({
           ref: function (ref) {
             _this.input = ref;
           },
-          tabIndex: this.props.tabindex,
+          tabIndex: this.props.tabIndex,
           onFocus: this.handleFocus,
           onBlur: this.handleBlur,
           className: "react-toggle-screenreader-only",
@@ -139,7 +137,7 @@ module.exports = React.createClass({
           ref: function (ref) {
             _this.input = ref;
           },
-          tabIndex: this.props.tabindex,
+          tabIndex: this.props.tabIndex,
           onFocus: this.handleFocus,
           onBlur: this.handleBlur,
           className: "react-toggle-screenreader-only",
