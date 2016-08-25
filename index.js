@@ -107,10 +107,10 @@ module.exports = React.createClass({
           ref: function (ref) {
             _this.input = ref;
           },
+          tabindex: this.props.tabIndex,
           onFocus: this.handleFocus,
           onBlur: this.handleBlur,
           className: "react-toggle-screenreader-only",
-          tabindex: this.props.tabIndex,
           type: "checkbox"
         }, inputFieldProperties))
       );
@@ -137,10 +137,10 @@ module.exports = React.createClass({
           ref: function (ref) {
             _this.input = ref;
           },
+          tabindex: this.props.tabIndex,
           onFocus: this.handleFocus,
           onBlur: this.handleBlur,
           className: "react-toggle-screenreader-only",
-          tabindex: this.props.tabIndex,
           type: "checkbox"
         }, inputFieldProperties))
       );

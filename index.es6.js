@@ -96,10 +96,10 @@ export default React.createClass({
 
           <input
             ref={ref => {this.input = ref;}}
+            tabindex={this.props.tabIndex}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             className="react-toggle-screenreader-only"
-            tabindex={this.props.tabIndex}
             type="checkbox"
             {...inputFieldProperties} />
         </div>
@@ -119,10 +119,10 @@ export default React.createClass({
 
           <input
             ref={ref => {this.input = ref;}}
+            tabindex={this.props.tabIndex}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             className="react-toggle-screenreader-only"
-            tabindex={this.props.tabIndex} 
             type="checkbox"
             {...inputFieldProperties} />
         </div>
