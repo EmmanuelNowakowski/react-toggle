@@ -102,7 +102,7 @@ module.exports = React.createClass({
           React.createElement("div", { className: "react-toggle-track-check" }),
           React.createElement("div", { className: "react-toggle-track-x" })
         ),
-        React.createElement("div", { tabindex: this.props.tabIndex, className: "react-toggle-thumb" }),
+        React.createElement("div", { className: "react-toggle-thumb" }),
         React.createElement("input", _extends({
           ref: function (ref) {
             _this.input = ref;
@@ -110,6 +110,7 @@ module.exports = React.createClass({
           onFocus: this.handleFocus,
           onBlur: this.handleBlur,
           className: "react-toggle-screenreader-only",
+          tabindex: this.props.tabIndex,
           type: "checkbox"
         }, inputFieldProperties))
       );
@@ -131,7 +132,7 @@ module.exports = React.createClass({
             React.createElement(X, null)
           )
         ),
-        React.createElement("div", { tabindex: this.props.tabIndex, className: "react-toggle-thumb" }),
+        React.createElement("div", { className: "react-toggle-thumb" }),
         React.createElement("input", _extends({
           ref: function (ref) {
             _this.input = ref;
@@ -139,6 +140,7 @@ module.exports = React.createClass({
           onFocus: this.handleFocus,
           onBlur: this.handleBlur,
           className: "react-toggle-screenreader-only",
+          tabindex: this.props.tabIndex,
           type: "checkbox"
         }, inputFieldProperties))
       );

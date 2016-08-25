@@ -92,13 +92,14 @@ export default React.createClass({
 
             </div>
             </div>
-          <div tabindex={this.props.tabIndex} className="react-toggle-thumb"></div>
+          <div className="react-toggle-thumb"></div>
 
           <input
             ref={ref => {this.input = ref;}}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             className="react-toggle-screenreader-only"
+            tabindex={this.props.tabIndex}
             type="checkbox"
             {...inputFieldProperties} />
         </div>
@@ -114,13 +115,14 @@ export default React.createClass({
               <X />
             </div>
           </div>
-          <div tabindex={this.props.tabIndex} className="react-toggle-thumb"></div>
+          <div className="react-toggle-thumb"></div>
 
           <input
             ref={ref => {this.input = ref;}}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             className="react-toggle-screenreader-only"
+            tabindex={this.props.tabIndex} 
             type="checkbox"
             {...inputFieldProperties} />
         </div>
